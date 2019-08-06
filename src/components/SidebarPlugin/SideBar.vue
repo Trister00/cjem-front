@@ -8,7 +8,7 @@
     <div class="logo">
       <a href="#" class="simple-text logo-mini">
         <div class="logo-img">
-          <img :src="imgLogo" alt>
+          <img :src="imgLogo" alt />
         </div>
       </a>
 
@@ -48,11 +48,11 @@ export default {
     },
     imgLogo: {
       type: String,
-      default: require("@/assets/img/vue-logo.png")
+      default: require("@/assets/img/logoCjem.png")
     },
     activeColor: {
       type: String,
-      default: "green",
+      default: "blue",
       validator: value => {
         let acceptedValues = ["", "purple", "blue", "green", "orange", "red"];
         return acceptedValues.indexOf(value) !== -1;

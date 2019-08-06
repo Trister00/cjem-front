@@ -1,29 +1,31 @@
 <template>
-  <div class="container">
-    <md-card class="md-card-profile">
-      <div class="md-card-avatar">
-        <img class="img" :src="cardUserImage" />
-      </div>
+  <div class="content">
+    <div class="md-layout">
+      <div class="md-layout-item md-medium-size-100 md-size-80">
+        <div class="container">
+          <md-card class="md-card-profile">
+            <md-card-content>
+              <div class="md-layout">
+                <div class="md-layout-item md-small-size-100 md-size-100">
+                  <md-field>
+                    <label>Email</label>
+                    <md-input v-model="email" type="email"></md-input>
+                  </md-field>
+                </div>
 
-      <md-card-content>
-        <div class="md-layout">
-          <div class="md-layout-item md-small-size-100 md-size-30">
-            <md-field>
-              <label>Email</label>
-              <md-input v-model="email" type="email"></md-input>
-            </md-field>
-          </div>
-
-          <div class="md-layout-item md-small-size-100 md-size-30">
-            <md-field>
-              <label>Password</label>
-              <md-input v-model="password" type="password"></md-input>
-            </md-field>
-          </div>
+                <div class="md-layout-item md-small-size-100 md-size-100">
+                  <md-field>
+                    <label>Password</label>
+                    <md-input v-model="password" type="password"></md-input>
+                  </md-field>
+                </div>
+              </div>
+              <md-button class="md-round md-default" @click="login">Login</md-button>
+            </md-card-content>
+          </md-card>
         </div>
-        <md-button class="md-round md-success" @click="login">Login</md-button>
-      </md-card-content>
-    </md-card>
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -62,4 +64,14 @@ export default {
   }
 };
 </script>
-<style></style>
+<style>
+.content {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+}
+.container {
+  float: left;
+  left: 40px;
+}
+</style>

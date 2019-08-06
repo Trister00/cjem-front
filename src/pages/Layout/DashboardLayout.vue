@@ -9,7 +9,7 @@
         <p>Dashboard</p>
       </sidebar-link>
       <div v-if="userInfo.role == 'qualite et audit'">
-        <sidebar-link to="/user">
+        <sidebar-link to="/qa_fiche_poste">
           <md-icon>person</md-icon>
           <p>QA Fiche de poste Integration</p>
         </sidebar-link>
@@ -23,10 +23,24 @@
         </sidebar-link>
       </div>
 
-      <sidebar-link to="/table">
-        <md-icon>content_paste</md-icon>
-        <p>List SG</p>
-      </sidebar-link>
+      <div v-if="userInfo.role == 'presidence et secretariat general' || userInfo.role == 'admin' ">
+        <sidebar-link to="/table">
+          <md-icon>content_paste</md-icon>
+          <p>List SG</p>
+        </sidebar-link>
+      </div>
+      <div v-if="userInfo.role == 'qualite et audit' || userInfo.role == 'admin'">
+        <sidebar-link to="/list_qa">
+          <md-icon>content_paste</md-icon>
+          <p>List QA</p>
+        </sidebar-link>
+      </div>
+      <div v-if="userInfo.role == 'integration et formation' || userInfo.role == 'admin'">
+        <sidebar-link to="/list_integ">
+          <md-icon>content_paste</md-icon>
+          <p>List Integration</p>
+        </sidebar-link>
+      </div>
       <div v-if="userInfo.role == 'presidence et secretariat general'">
         <sidebar-link to="/sg_lettre">
           <md-icon>library_books</md-icon>
@@ -35,6 +49,12 @@
         <sidebar-link to="/sg_accuse">
           <md-icon>library_books</md-icon>
           <p>SG Accuse</p>
+        </sidebar-link>
+      </div>
+      <div v-if="userInfo.role == 'integration et formation'">
+        <sidebar-link to="/lettre_approbation">
+          <md-icon>library_books</md-icon>
+          <p>Lettre Approbation</p>
         </sidebar-link>
       </div>
       <div v-if="userInfo.role == 'admin'">
@@ -81,6 +101,9 @@ export default {
   },
   created() {
     this.userInfo = JSON.parse(localStorage.getItem("userInfo"));
+    if (this.userInfo == null) {
+      this.$router.push("/login");
+    }
     console.log(this.userInfo);
   }
 };

@@ -4,7 +4,7 @@
       <div class="md-layout-item md-medium-size-100 md-size-66">
         <form>
           <md-card>
-            <md-card-header data-background-color="green">
+            <md-card-header data-background-color="grey">
               <h4 class="title">Qualite et audit</h4>
               <p class="category">Fiche de processus Tresorier</p>
             </md-card-header>
@@ -138,48 +138,48 @@ export default {
   },
   methods: {
     send() {
-      let tmpEntrees = this.ent.split(".");
+      let tmpEntrees = this.ent.split(";");
       tmpEntrees.forEach(item => {
         let t = { text: item };
         this.entrees.push(t);
       });
-      let tmpSorties = this.sort.split(".");
+      let tmpSorties = this.sort.split(";");
       tmpSorties.forEach(item => {
         let t = { text: item };
         this.sorties.push(t);
       });
 
-      let tmpActivites = this.acti.split(".");
+      let tmpActivites = this.acti.split(";");
       tmpActivites.forEach(item => {
         let t = { text: item };
         this.activites.push(t);
       });
 
-      let tmpFinanciers = this.financ.split(".");
+      let tmpFinanciers = this.financ.split(";");
       tmpFinanciers.forEach(item => {
         let t = { text: item };
         this.financiers.push(t);
       });
 
-      let tmpMateriels = this.mat.split(".");
+      let tmpMateriels = this.mat.split(";");
       tmpMateriels.forEach(item => {
         let t = { text: item };
         this.materiels.push(t);
       });
 
-      let tmpStrategiques = this.strat.split(".");
+      let tmpStrategiques = this.strat.split(";");
       tmpStrategiques.forEach(item => {
         let t = { text: item };
         this.strategiques.push(t);
       });
 
-      let tmpPerformances = this.perfo.split(".");
+      let tmpPerformances = this.perfo.split(";");
       tmpPerformances.forEach(item => {
         let t = { text: item };
         this.performances.push(t);
       });
 
-      let tmpDocuments = this.doc.split(".");
+      let tmpDocuments = this.doc.split(";");
       tmpDocuments.forEach(item => {
         let t = { text: item };
         this.documents.push(t);

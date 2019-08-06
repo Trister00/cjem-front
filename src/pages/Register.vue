@@ -1,7 +1,7 @@
 <template>
   <form>
     <md-card>
-      <md-card-header data-background-color="green">
+      <md-card-header data-background-color="grey">
         <h4 class="title">Creation compte</h4>
         <p class="category"></p>
       </md-card-header>
@@ -38,7 +38,7 @@
           </div>
 
           <div class="md-layout-item md-size-100 text-right">
-            <md-button class="md-raised md-success" @click="send">Ajouter Utilisateur</md-button>
+            <md-button class="md-raised md-default" @click="send">Ajouter Utilisateur</md-button>
           </div>
         </div>
       </md-card-content>

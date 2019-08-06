@@ -4,7 +4,7 @@
       <div class="md-layout-item md-medium-size-100 md-size-66">
         <form>
           <md-card>
-            <md-card-header data-background-color="green">
+            <md-card-header data-background-color="grey">
               <h4 class="title">Accuse</h4>
               <p class="category">Formulaire</p>
             </md-card-header>
@@ -31,7 +31,7 @@
                 </div>
 
                 <div class="md-layout-item md-size-100 text-right">
-                  <md-button class="md-raised md-success" @click="send">Generer le Document</md-button>
+                  <md-button class="md-raised md-default" @click="send">Generer le Document</md-button>
                 </div>
               </div>
             </md-card-content>

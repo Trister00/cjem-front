@@ -3,17 +3,17 @@ import DashboardLayout from "@/pages/Layout/DashboardLayout.vue";
 import Dashboard from "@/pages/Dashboard.vue";
 import UserProfile from "@/pages/UserProfile.vue";
 import TableList from "@/pages/TableList.vue";
-import Typography from "@/pages/Typography.vue";
-import Icons from "@/pages/Icons.vue";
-import Maps from "@/pages/Maps.vue";
-import Notifications from "@/pages/Notifications.vue";
-import UpgradeToPRO from "@/pages/UpgradeToPRO.vue";
+
 import SgLettre from "@/pages/SgLettre";
 import SgAccuse from "@/pages/SgAccuse";
 import QaFicheProcessusIntegration from "@/pages/QaFicheProcessusIntegration";
 import QaFicheProcessusTresorier from "@/pages/QaFicheProcessusTresorier";
 import Login from "@/pages/Login";
 import Register from "@/pages/Register";
+import LettreApprobation from "@/pages/LettreApprobation";
+import ListeQA from "@/pages/ListQA";
+import ListIntegration from "@/pages/ListIntegration";
+import QAFichePoste from "@/pages/QAFichePoste";
 
 const routes = [
   {
@@ -28,8 +28,13 @@ const routes = [
       },
       {
         path: "user",
-        name: "QA Fiche Integration",
+        name: "user",
         component: UserProfile
+      },
+      {
+        path: "qa_fiche_poste",
+        name: "QA Fiche Integration",
+        component: QAFichePoste
       },
       {
         path: "qa_fiche_processus_integration",
@@ -62,27 +67,19 @@ const routes = [
         component: Register
       },
       {
-        path: "icons",
-        name: "Icons",
-        component: Icons
+        path: "lettre_approbation",
+        name: "LettreApprobation",
+        component: LettreApprobation
       },
       {
-        path: "maps",
-        name: "Maps",
-        meta: {
-          hideFooter: true
-        },
-        component: Maps
+        path: "list_qa",
+        name: "ListQA",
+        component: ListeQA
       },
       {
-        path: "notifications",
-        name: "Notifications",
-        component: Notifications
-      },
-      {
-        path: "upgrade",
-        name: "Upgrade to PRO",
-        component: UpgradeToPRO
+        path: "list_integ",
+        name: "ListIntegration",
+        component: ListIntegration
       }
     ]
   },

@@ -17,7 +17,7 @@
 
         <div class="md-collapse">
           <div class="md-autocomplete">
-            <md-button class="md-success" @click="logout">Log out</md-button>
+            <md-button class="md-default" @click="logout">Log out</md-button>
           </div>
           <md-list>
             <md-list-item href="#/">
