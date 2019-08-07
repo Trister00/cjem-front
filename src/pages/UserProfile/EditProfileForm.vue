@@ -10,7 +10,7 @@
           <div class="md-layout-item md-small-size-100 md-size-50">
             <md-field>
               <label>Nom</label>
-              <md-input v-model="name"></md-input>
+              <md-input v-model="name" disabled></md-input>
             </md-field>
           </div>
           <div class="md-layout-item md-small-size-100 md-size-50">
@@ -19,19 +19,40 @@
               <md-input type="email" v-model="email"></md-input>
             </md-field>
           </div>
+          <!-- <div class="md-layout-item md-small-size-100 md-size-50">
+            <md-field>
+              <label>Old Password</label>
+              <md-input type="password" v-model="password" autocomplete="new-password"></md-input>
+            </md-field>
+          </div>-->
           <div class="md-layout-item md-small-size-100 md-size-50">
             <md-field>
-              <label>Password</label>
-              <md-input type="password" v-model="password"></md-input>
+              <label>New Password</label>
+              <md-input type="password" v-model="newpassword" autocomplete="new-password"></md-input>
             </md-field>
           </div>
 
           <div class="md-layout-item md-size-100 text-right">
-            <md-button class="md-raised" @click="send">Editer</md-button>
+            <md-button class="md-raised" @click="showDialog = true">Editer</md-button>
           </div>
         </div>
       </md-card-content>
     </md-card>
+    <md-dialog :md-active.sync="showDialog">
+      <md-dialog-title>Preferences</md-dialog-title>
+
+      <div class="md-layout-item md-small-size-100 md-size-100">
+        <md-field>
+          <label>Old Password</label>
+          <md-input type="password" v-model="password" autocomplete="new-password"></md-input>
+        </md-field>
+      </div>
+
+      <md-dialog-actions>
+        <md-button class="md-primary" @click="showDialog = false">Close</md-button>
+        <md-button class="md-primary" @click="updateConfirm">Save</md-button>
+      </md-dialog-actions>
+    </md-dialog>
   </form>
 </template>
 <script>
@@ -48,23 +69,28 @@ export default {
     return {
       name: "",
       email: "",
-      password: ""
+      password: "",
+      newpassword: "",
+      showDialog: false,
+      active: false,
+      value: null
     };
   },
   mounted() {
     this.name = JSON.parse(localStorage.getItem("userInfo")).name;
     this.email = JSON.parse(localStorage.getItem("userInfo")).email;
-    this.password = JSON.parse(localStorage.getItem("userInfo")).password;
+    // this.password = JSON.parse(localStorage.getItem("userInfo")).password;
     console.log(this.name);
     console.log(this.email);
     console.log(this.password);
   },
   methods: {
-    send() {
-      if (this.password === "") {
+    updateConfirm() {
+      if (this.newpasswordpassword === "") {
         let info = {
           name: this.name,
-          email: this.email
+          email: this.email,
+          currentPassword: this.password
         };
         axios
           .post("http://localhost:5000/editUser", info)
@@ -80,7 +106,8 @@ export default {
         let info = {
           name: this.name,
           email: this.email,
-          password: this.password
+          password: this.newpassword,
+          currentPassword: this.password
         };
         axios
           .post("http://localhost:5000/editUser", info)
@@ -90,10 +117,50 @@ export default {
               localStorage.removeItem("userInfo");
               this.$router.push("/login");
             }
+            if (res.status == 401) {
+              alert("Problem occured");
+            }
           })
           .catch(err => console.log(err));
       }
+      this.showDialog = false;
     }
+    // send() {
+    //   if (this.newpasswordpassword === "") {
+    //     let info = {
+    //       name: this.name,
+    //       email: this.email,
+    //       currentPassword: this.password
+    //     };
+    //     axios
+    //       .post("http://localhost:5000/editUser", info)
+    //       .then(res => {
+    //         if (res.status == 200) {
+    //           alert("Update successfully");
+    //           localStorage.removeItem("userInfo");
+    //           this.$router.push("/login");
+    //         }
+    //       })
+    //       .catch(err => console.log(err));
+    //   } else {
+    //     let info = {
+    //       name: this.name,
+    //       email: this.email,
+    //       password: this.newpassword,
+    //       currentPassword: this.password
+    //     };
+    //     axios
+    //       .post("http://localhost:5000/editUser", info)
+    //       .then(res => {
+    //         if (res.status == 200) {
+    //           alert("Update successfully");
+    //           localStorage.removeItem("userInfo");
+    //           this.$router.push("/login");
+    //         }
+    //       })
+    //       .catch(err => console.log(err));
+    //   }
+    // }
   }
 };
 </script>

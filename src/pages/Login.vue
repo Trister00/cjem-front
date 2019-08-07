@@ -4,6 +4,7 @@
       <div class="md-layout-item md-medium-size-100 md-size-80">
         <div class="container">
           <md-card class="md-card-profile">
+            <img src="@/assets/img/logo_login.png" style="height : 200px" />
             <md-card-content>
               <div class="md-layout">
                 <div class="md-layout-item md-small-size-100 md-size-100">
@@ -64,9 +65,14 @@ export default {
   display: grid;
   place-items: center;
   height: 100vh;
+  background-color: rgb(0, 0, 76);
 }
 .container {
   float: left;
   left: 40px;
+}
+.img {
+  float: left;
+  top: 400px;
 }
 </style>

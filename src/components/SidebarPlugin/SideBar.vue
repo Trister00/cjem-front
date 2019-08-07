@@ -48,7 +48,7 @@ export default {
     },
     imgLogo: {
       type: String,
-      default: require("@/assets/img/logoCjem.png")
+      default: require("@/assets/img/logo_login.png")
     },
     activeColor: {
       type: String,
