@@ -33,12 +33,7 @@ import axios from "axios";
 
 export default {
   name: "user-card",
-  props: {
-    cardUserImage: {
-      type: String,
-      default: require("@/assets/img/faces/marc.jpg")
-    }
-  },
+
   data() {
     return {
       email: "",
